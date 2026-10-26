@@ -190,6 +190,19 @@ body > .container > .row { row-gap: var(--rw-space-4); }
 }
 [role="main"] table > :not(caption) > * > * { padding: var(--rw-space-2) var(--rw-space-3); border-bottom: var(--rw-rule); vertical-align: top; min-width: 9rem; max-width: 32rem; overflow-wrap: anywhere; }
 [role="main"] table th { background: var(--rw-sage); font-family: var(--rw-font-mono); font-size: .72rem; font-weight: 400; letter-spacing: .025em; }
+/* Hide property labels visually while preserving column headers for assistive technology. */
+[role="main"] table thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
 [role="main"] table tbody tr:last-child > * { border-bottom: 0; }
 [role="main"] table caption { color: var(--rw-muted); font-family: var(--rw-font-mono); padding: var(--rw-space-2); }
 
