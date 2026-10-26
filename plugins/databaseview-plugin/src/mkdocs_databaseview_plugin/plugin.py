@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import re
+import posixpath
 from pathlib import Path
 from typing import Any
-from urllib.parse import quote, urlparse
+from urllib.parse import quote
 
 import yaml
 
@@ -46,27 +47,6 @@ class DBViewPlugin(BasePlugin):
 
     def on_config(self, config):
         self.docs_dir = Path(config["docs_dir"]).resolve()
-
-        self.use_directory_urls = config.get(
-            "use_directory_urls",
-            True,
-        )
-
-        site_url = str(
-            config.get("site_url") or ""
-        ).strip()
-
-        if site_url:
-            parsed = urlparse(site_url)
-            self.site_url_path = parsed.path or "/"
-        else:
-            self.site_url_path = "/"
-
-        if not self.site_url_path.startswith("/"):
-            self.site_url_path = "/" + self.site_url_path
-
-        if not self.site_url_path.endswith("/"):
-            self.site_url_path += "/"
 
         print(f"[StaticBases] docs: {self.docs_dir}")
 
@@ -127,6 +107,10 @@ class DBViewPlugin(BasePlugin):
             current_file = Path(
                 page.file.abs_src_path
             ).resolve()
+
+        # Markdown links are relative to the source page; MkDocs rewrites
+        # them using its file registry and use_directory_urls setting.
+        self.current_page_dir = posixpath.dirname(page.file.src_uri)
 
         return self._replace_base_embeds(
             markdown,
@@ -2213,56 +2197,13 @@ class DBViewPlugin(BasePlugin):
         if not note:
             return ""
 
-        relative = (
-            note["relative_path"]
-            .as_posix()
-            .replace("\\", "/")
+        relative = posixpath.relpath(
+            note["relative_path"].as_posix(),
+            self.current_page_dir or ".",
         )
-
-        if relative.lower().endswith(".md"):
-            relative = relative[:-3]
-
-        parts = relative.split("/")
-
-        encoded_parts = [
-            quote(
-                part,
-                safe=".-_()",
-            )
-            for part in parts
-        ]
-
-        path = "/".join(encoded_parts)
-
-        if self.use_directory_urls:
-
-            href = (
-                self.site_url_path
-                + path
-                + "/"
-            )
-
-            if relative.lower() == "index":
-
-                href = self.site_url_path
-
-            elif relative.lower().endswith("/index"):
-
-                directory = path[:-len("/index")]
-
-                href = (
-                    self.site_url_path
-                    + directory
-                    + "/"
-                )
-
-        else:
-
-            href = (
-                self.site_url_path
-                + path
-                + ".html"
-            )
+        # Keep the .md suffix so MkDocs can resolve and validate the target.
+        # Encode URL punctuation as well as spaces in note filenames.
+        href = quote(relative, safe="/")
 
         return (
             f"[{self._escape_link_text(note['name'])}]"

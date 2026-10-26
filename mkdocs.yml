@@ -1,6 +1,6 @@
 site_name: Reading Wiki
 site_description: Books, ideas, and connections
-site_url: ""
+site_url: https://l4valamp.github.io/reading-wiki/
 theme:
   name: mkdocs
 plugins:
