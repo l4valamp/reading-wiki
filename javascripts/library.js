@@ -1,5 +1,10 @@
 /* Progressive enhancement: keep tables intact inside keyboard-scrollable regions. */
 document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.rw-book-image').forEach(image => {
+    const showPlaceholder = () => { image.hidden = true; };
+    image.addEventListener('error', showPlaceholder);
+    if (image.complete && image.naturalWidth === 0) showPlaceholder();
+  });
   document.querySelectorAll('[role="main"] table').forEach((table, index) => {
     if (table.parentElement.classList.contains('rw-table-scroll')) return;
     const wrapper = document.createElement('div');
