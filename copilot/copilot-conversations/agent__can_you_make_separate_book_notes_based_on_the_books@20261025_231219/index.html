@@ -17,6 +17,7 @@
         <link href="../../../css/base.css" rel="stylesheet">
         <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
         <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../../stylesheets/library.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
     </head>
@@ -100,7 +101,17 @@
 <p><strong>ai</strong>: I’ll tag every book note and create a separate view grouped by that tag, with books sorted newest first. Obsidian tags can’t contain spaces, so I’ll use <code>unfinished-page</code>.Added <code>unfinished-page</code> to all 48 book notes.</p>
 <p>Created <a href="/reading-wiki/books/Book%20Page%20Progress/">Book Page Progress</a> with a separate database grouped into <strong>Unfinished page</strong> and <strong>Finished page</strong>, sorted by <code>date started</code>, newest first.</p>
 <p>Remove the tag when a page is finished to move it into the finished group.
-[Timestamp: 2026/10/25 23:24:36]</p></div>
+[Timestamp: 2026/10/25 23:24:36]</p>
+<p><strong>user</strong>: assume every book without a time label was read in 2024. apply that date to them. also fill in authors to best of ability
+[Timestamp: 2026/10/25 23:36:23]</p>
+<p><strong>ai</strong>: I’ll check for missing dates and authors, apply 2024 to books without a reading-time label, and look up the missing authors.The books without time labels are on the 2024 shelf. I’ll use <code>2024-01-01</code> as a year-only placeholder so they sort correctly, with a note explaining that the day is unknown. I’ll preserve existing dates and 2023 labels.</p>
+<p>I’ve found most missing authors. “About Time” is ambiguous, so I’ll leave its author blank unless the original page identifies the edition.Updated 13 undated books to <code>2024-01-01</code>, marked in each note as a year-only placeholder. Existing dates and 2023 labels were preserved.</p>
+<p>Filled 15 missing or placeholder authors. Only <a href="/reading-wiki/books/About%20Time/">About Time</a> remains unconfirmed because multiple books share that title.
+[Timestamp: 2026/10/25 23:36:23]</p>
+<p><strong>user</strong>: put any book still under year read: none to a 2023 date
+[Timestamp: 2026/10/25 23:45:31]</p>
+<p><strong>ai</strong>: I’ll give books with no calculated “Year read” a start date of <code>2023-01-01</code>, marked as a year-only placeholder.Updated all 7 books with no “Year read” to <code>2023-01-01</code>, marked as a year-only placeholder. They’ll now appear under <strong>2023</strong>.
+[Timestamp: 2026/10/25 23:45:31]</p></div>
             </div>
         </div>
 
@@ -114,6 +125,7 @@
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../../js/base.js"></script>
+        <script src="../../../javascripts/library.js"></script>
         <script src="../../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
