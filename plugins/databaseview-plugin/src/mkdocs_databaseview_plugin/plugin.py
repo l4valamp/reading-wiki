@@ -4,7 +4,7 @@ import re
 import posixpath
 from pathlib import Path
 from typing import Any
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 
 import yaml
 
@@ -47,6 +47,7 @@ class DBViewPlugin(BasePlugin):
 
     def on_config(self, config):
         self.docs_dir = Path(config["docs_dir"]).resolve()
+        self.site_url_path = urlsplit(config.get("site_url") or "").path.rstrip("/")
 
         print(f"[StaticBases] docs: {self.docs_dir}")
 
@@ -111,6 +112,7 @@ class DBViewPlugin(BasePlugin):
         # Markdown links are relative to the source page; MkDocs rewrites
         # them using its file registry and use_directory_urls setting.
         self.current_page_dir = posixpath.dirname(page.file.src_uri)
+        self.files = files
 
         return self._replace_base_embeds(
             markdown,
@@ -2197,13 +2199,18 @@ class DBViewPlugin(BasePlugin):
         if not note:
             return ""
 
-        relative = posixpath.relpath(
-            note["relative_path"].as_posix(),
-            self.current_page_dir or ".",
-        )
-        # Keep the .md suffix so MkDocs can resolve and validate the target.
-        # Encode URL punctuation as well as spaces in note filenames.
-        href = quote(relative, safe="/")
+        source_path = note["relative_path"].as_posix()
+        if self.site_url_path:
+            # Use MkDocs' output URL and explicitly retain the Pages project
+            # prefix, regardless of the page displaying this database view.
+            target = self.files.get_file_from_path(source_path)
+            if target is None:
+                raise ValueError(f"Note is not a MkDocs file: {source_path}")
+            href = self.site_url_path + "/" + target.url
+        else:
+            # Without a deployment prefix, let MkDocs resolve source links.
+            relative = posixpath.relpath(source_path, self.current_page_dir or ".")
+            href = quote(relative, safe="/")
 
         return (
             f"[{self._escape_link_text(note['name'])}]"

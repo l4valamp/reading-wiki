@@ -62,6 +62,8 @@ class DatabaseViewLinksTest(unittest.TestCase):
                             parser.feed((tmp / "site" / section / "index.html").read_text(encoding="utf-8"))
                             self.assertEqual(len(parser.links), count)
                             for href in parser.links:
+                                if site_url:
+                                    self.assertTrue(href.startswith("/reading-wiki/"), href)
                                 resolved = urlsplit(urljoin(
                                     f"https://l4valamp.github.io/reading-wiki/{section}/", href
                                 ))
