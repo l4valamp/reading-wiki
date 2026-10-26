@@ -1,8 +1,0 @@
-views:
-  - type: table
-    name: Topics
-    filters:
-      file.tags.contains: topic
-    order:
-      - file.name
-      - description

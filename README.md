@@ -1,27 +1,34 @@
-# Reading Wiki Starter
+# Reading Wiki
 
-This is a separate MkDocs project. The databaseview plugin source is copied from SuckitUpDocs; the original project is unchanged.
+An MkDocs site built from Obsidian notes. An Obsidian companion plugin automatically exports Bases query results; MkDocs publishes those snapshots without reimplementing Obsidian's filtering or formulas.
 
-## Windows PowerShell
+## Daily workflow
 
-Open a terminal in this folder, then run:
+Keep this project's `docs` vault open in Obsidian. Add or edit notes normally. Database exports and their manifest update automatically, including new embedded views.
+
+```powershell
+.\.venv\Scripts\python.exe -m mkdocs serve
+.\.venv\Scripts\python.exe -m mkdocs gh-deploy --strict
+```
+
+Builds and deployment wait for a fresh Obsidian export. No copying tables or editing mappings is required. Publishing remains an explicit command.
+
+## Setup on another computer
 
 ```powershell
 py -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe -m mkdocs serve
+.\.venv\Scripts\python.exe tools/install_obsidian_exporter.py
 ```
 
-Open http://127.0.0.1:8000 in a browser. Stop the server with Ctrl+C.
+Open `docs` as an Obsidian vault and enable Bases and **Reading Wiki Exporter** in Community plugins. The exporter is already installed and enabled in this project's current vault. See [automatic export details](database-snapshots/README.md) for configuration and troubleshooting.
 
-To build the static site:
+## Validation
 
 ```powershell
-.\.venv\Scripts\python.exe -m mkdocs build
+node --test plugins/obsidian-reading-wiki-exporter/exporter.test.js
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m mkdocs build --strict
 ```
 
-The output is in `site/`. A GitHub repository and GitHub Pages deployment can be configured separately.
-
-## Limitations
-
-The copied plugin currently renders Markdown tables, not interactive Obsidian Bases or card galleries. This starter has not been executed in the build environment, so validate the local build before deployment.
+Output is written to `site/`; GitHub Pages serves https://l4valamp.github.io/reading-wiki/.

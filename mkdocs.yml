@@ -5,7 +5,9 @@ theme:
   name: mkdocs
 plugins:
   - search
-  - databaseview
+  - databaseview:
+      auto_export: true
+      snapshot_manifest: database-snapshots/manifest.yml
 nav:
   - Home: index.md
   - Books: books/index.md

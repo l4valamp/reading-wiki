@@ -1,0 +1,30 @@
+filters:
+  and:
+    - file.tags.contains("book")
+    - '!file.name.contains("Template")'
+formulas:
+  year_read: if(note["date started"], date(note["date started"]).year, null)
+properties:
+  formula.year_read:
+    displayName: Year read
+views:
+  - type: table
+    name: View
+    groupBy:
+      property: formula.year_read
+      direction: DESC
+    order:
+      - file.name
+      - author
+    sort:
+      - property: status
+        direction: DESC
+      - property: date started
+        direction: DESC
+    columnSize:
+      file.name: 365
+  - type: table
+    name: OnTopicPage
+    filters:
+      and:
+        - file.links.contains(this)

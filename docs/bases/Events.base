@@ -1,0 +1,13 @@
+filters:
+  and:
+    - file.hasTag("topic")
+    - '!file.name.contains("Template")'
+    - type.contains("Event")
+views:
+  - type: table
+    name: View
+  - type: table
+    name: Events Mentioning Page
+    filters:
+      and:
+        - file.links.contains(this)

@@ -1,0 +1,7 @@
+views:
+  - type: table
+    name: View
+    filters:
+      and:
+        - file.hasTag("topic")
+        - '!file.name.contains("Template")'

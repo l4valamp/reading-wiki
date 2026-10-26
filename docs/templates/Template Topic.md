@@ -2,6 +2,6 @@
 tags: [topic]
 description: Research into competition for mates and status
 ---
-# Intrasexual Competition
+# Topic Name
 
 Notes and reading references go here.

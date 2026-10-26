@@ -3,3 +3,9 @@ venv/
 __pycache__/
 *.pyc
 site/
+docs/.obsidian/
+database-snapshots/manifest.yml
+database-snapshots/state.json
+database-snapshots/generated/
+Microsoft/Windows/PowerShell/ModuleAnalysisCache
+docs/.copilot/model-catalog-cache.json

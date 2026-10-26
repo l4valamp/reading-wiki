@@ -1,0 +1,23 @@
+filters:
+  and:
+    - file.hasTag("book")
+    - '!file.name.contains("Template")'
+formulas:
+  page_progress: if(file.hasTag("unfinished-page"), "Unfinished page", "Finished page")
+properties:
+  formula.page_progress:
+    displayName: Page progress
+views:
+  - type: table
+    name: Page progress
+    groupBy:
+      property: formula.page_progress
+      direction: DESC
+    order:
+      - file.name
+      - formula.page_progress
+    sort:
+      - property: date started
+        direction: DESC
+    columnSize:
+      file.name: 411
