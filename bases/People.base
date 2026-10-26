@@ -1,0 +1,13 @@
+filters:
+  and:
+    - file.hasTag("topic")
+    - '!file.name.contains("Template")'
+    - type.contains("Person")
+views:
+  - type: table
+    name: View
+  - type: table
+    name: People Mentioning Page
+    filters:
+      and:
+        - file.links.contains(this)

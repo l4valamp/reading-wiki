@@ -1,9 +1,0 @@
-views:
-  - type: table
-    name: Books
-    filters:
-      file.tags.contains: book
-    order:
-      - file.name
-      - author
-      - status

@@ -1,0 +1,12 @@
+filters:
+  and:
+    - file.tags.contains("book")
+    - '!file.name.contains("Template")'
+views:
+  - type: table
+    name: View
+  - type: table
+    name: OnTopicPage
+    filters:
+      and:
+        - file.links.contains(this)
