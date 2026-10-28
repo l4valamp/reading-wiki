@@ -272,6 +272,18 @@ body > footer a { color: var(--rw-link); }
   body > .navbar .collapsing, #toc-collapse.collapsing,
   #mkdocs_search_modal .modal-dialog, #mkdocs_keyboard_modal .modal-dialog { transition: none; }
 }
+/* Individual book covers float beside the title and opening text. */
+[role="main"] img.rw-page-cover {
+  float: right;
+  width: 160px;
+  height: 240px;
+  max-width: 40%;
+  object-fit: contain;
+  object-position: top center;
+  margin: 0 0 1.25rem 1.5rem;
+  background: var(--rw-sage);
+}
+[role="main"]:has(.rw-page-cover) { display: flow-root; }
 /* Books: preserve exported year groups and keep labels visible on all devices. */
 [role="main"] ul.rw-book-grid {
   display: grid;
