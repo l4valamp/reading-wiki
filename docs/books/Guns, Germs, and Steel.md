@@ -3,23 +3,13 @@ tags:
   - book
   - unfinished-page
 author: "Jared Diamond"
+cover image: "https://bugsblog.neocities.org/Bookcovers/51LVx6UrW5L._AC_UF1000,1000_QL80_.jpg"
 status: To read
 date started: 2023-06-02
 date ended: 2023-06-14
 ---
 # Guns, Germs, and Steel
 
-## Reading log
-
-- Logged under: 2023.
-- Reading dates on the webpage: 6/2/23–6/14/23.
-
-Dates refer to the source reading log. Status retains the template default.
-
 ## Notes
 
-Notes and reading references go here.
-
-## Source
-
-[Bugs's Bookshelf](https://bugsblog.neocities.org/)
+I know this is kind of baby's first nonfiction book and Jared Diamond is rightfully dunked on (Including by David Graeber, my goat.) But it was cool and eye-opening for me in highschool. I like knowing about the "Cereal package", flood retreat farming, how efficiently corn travels across hemispheres, etc. 

@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "David Graeber and David Wengrow"
+cover image: "https://bugsblog.neocities.org/Bookcovers/9780374157357.jpg"
 status: To read
 date started: 2023-09-05
 date ended: 2023-10-19

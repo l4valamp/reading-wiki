@@ -2,24 +2,14 @@
 tags:
   - book
   - unfinished-page
-author:
+author: Tamsyn Muir
+cover image: https://bugsblog.neocities.org/Bookcovers/9781250313225.jpg
 status: To read
-date started:
-date ended:
+date started: 2024-08-05T00:00:00
+date ended: 2024-08-05T00:00:00
 ---
 # Harrow The Ninth
 
-## Reading log
-
-- Logged under: 2024.
-- Exact reading dates are not supplied on the webpage.
-
-Dates refer to the source reading log. Status retains the template default.
-
 ## Notes
 
-Notes and reading references go here.
-
-## Source
-
-[Bugs's Bookshelf](https://bugsblog.neocities.org/)
+Ate.

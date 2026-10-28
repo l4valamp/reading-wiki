@@ -6,7 +6,7 @@ sessionId: "01a17631-1806-77f3-89c3-3ed2e495ff55"
 agentLabel: "can you make separate book notes based on the books displaye…"
 tags:
   - copilot-conversation
-usage: '{"usedTokens":57910,"contextWindow":828400,"updatedAt":1792985146588}'
+usage: '{"usedTokens":92459,"contextWindow":828400,"updatedAt":1792986501530}'
 ---
 
 **user**: can you make separate book notes based on the books displayed on this web-page? https://bugsblog.neocities.org/
@@ -49,3 +49,19 @@ Created [[Book Page Progress]] with a separate database grouped into **Unfinishe
 
 Remove the tag when a page is finished to move it into the finished group.
 [Timestamp: 2026/10/25 23:24:36]
+
+**user**: assume every book without a time label was read in 2024. apply that date to them. also fill in authors to best of ability
+[Timestamp: 2026/10/25 23:36:23]
+
+**ai**: I’ll check for missing dates and authors, apply 2024 to books without a reading-time label, and look up the missing authors.The books without time labels are on the 2024 shelf. I’ll use `2024-01-01` as a year-only placeholder so they sort correctly, with a note explaining that the day is unknown. I’ll preserve existing dates and 2023 labels.
+
+I’ve found most missing authors. “About Time” is ambiguous, so I’ll leave its author blank unless the original page identifies the edition.Updated 13 undated books to `2024-01-01`, marked in each note as a year-only placeholder. Existing dates and 2023 labels were preserved.
+
+Filled 15 missing or placeholder authors. Only [[About Time]] remains unconfirmed because multiple books share that title.
+[Timestamp: 2026/10/25 23:36:23]
+
+**user**: put any book still under year read: none to a 2023 date
+[Timestamp: 2026/10/25 23:45:31]
+
+**ai**: I’ll give books with no calculated “Year read” a start date of `2023-01-01`, marked as a year-only placeholder.Updated all 7 books with no “Year read” to `2023-01-01`, marked as a year-only placeholder. They’ll now appear under **2023**.
+[Timestamp: 2026/10/25 23:45:31]

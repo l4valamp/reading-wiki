@@ -2,10 +2,11 @@
 tags:
   - book
   - unfinished-page
-author: Example Author
+author: Naomi Klein
+cover image: https://bugsblog.neocities.org/Bookcovers/TheShockDoctrine.jpg
 status: To read
-date started:
-date ended:
+date started: 2026-10-25T23:34:00
+date ended: 2026-10-25T23:34:00
 ---
 ### Introduction 
 [[Milton Friedman]] advised Chilean dictator 

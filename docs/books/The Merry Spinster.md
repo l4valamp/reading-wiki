@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "Daniel Lavery"
+cover image: "https://bugsblog.neocities.org/Bookcovers/merryspinster.jpg"
 status: To read
 date started: 2023-12-30
 date ended: 2024-01-09

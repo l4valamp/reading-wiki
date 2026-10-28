@@ -105,6 +105,64 @@ class SnapshotPublishingTest(unittest.TestCase):
         self.assertIsInstance(caught.exception.__context__, PluginError)
         self.assertRegex(str(caught.exception.__context__), pattern)
 
+    def test_book_cards_preserve_groups_links_and_other_views(self):
+        config_path = self.root / 'mkdocs.yml'
+        data = yaml.safe_load(config_path.read_text(encoding='utf-8'))
+        data['plugins'][0]['databaseview']['book_card_views'] = ['Books.base', 'Books.base#View']
+        config_path.write_text(yaml.safe_dump(data), encoding='utf-8')
+        book = self.docs / 'books/A book (draft) #1.md'
+        book.write_text('---\ncover image: "https://example.com/cover.jpg?a=1&b=2"\n---\n# Book\n', encoding='utf-8')
+        table = '| file.name | author |\n| --- | --- |\n| [A & B](A%20book%20%28draft%29%20%231.md) | Writer & Co |\n'
+        (self.snapshots / 'books.md').write_text('### 2026\n\n' + table + '\n### 2024\n\n' + table, encoding='utf-8')
+        self.manifest['books/index.md']['Books.base#View'] = 'books.md'
+        self.save_manifest()
+        for explicit in (False, True):
+            if explicit:
+                page = self.docs / 'books/index.md'
+                page.write_text('# Books\n\n![[Books.base#View]]\n', encoding='utf-8')
+            for directory_urls in (True, False):
+                for site_url in ('', 'https://example.com/reading-wiki/'):
+                    with self.subTest(explicit=explicit, directory_urls=directory_urls, site_url=site_url):
+                        self.run_build(directory_urls, site_url)
+                        html = (self.root / 'site/books/index.html').read_text(encoding='utf-8')
+                        self.assertEqual(html.count('class="rw-book-card"'), 2)
+                        self.assertIn('id="2026"', html)
+                        self.assertLess(html.index('id="2026"'), html.index('id="2024"'))
+                        self.assertIn('A &amp; B', html)
+                        self.assertIn('Writer &amp; Co', html)
+                        self.assertIn('cover.jpg?a=1&amp;b=2', html)
+                        self.assertIn('loading="lazy"', html)
+                        parser = Links()
+                        parser.feed(html)
+                        for href in [h for h in parser.hrefs if 'draft' in h]:
+                            url = urlsplit(urljoin('https://example.com/reading-wiki/books/', href))
+                            target = self.root / 'site' / unquote(url.path[len('/reading-wiki/'):])
+                            if url.path.endswith('/'):
+                                target /= 'index.html'
+                            self.assertTrue(target.is_file(), href)
+                        topic_output = 'topics/A topic/index.html' if directory_urls else 'topics/A topic.html'
+                        topic = (self.root / 'site' / topic_output).read_text(encoding='utf-8')
+                        self.assertIn('No results.', topic)
+                        self.assertNotIn('rw-book-grid', topic)
+
+    def test_book_cover_validation_and_empty_cards(self):
+        from mkdocs_databaseview_plugin.book_cards import cover_url, render_cards
+        for value in (None, '', '   ', [], 42, 'javascript:alert(1)', 'data:image/png;base64,abc',
+                      '/cover.jpg', '//example.com/cover.jpg', 'https://', 'https://example.com:bad/a',
+                      'https://example.com/a b.jpg', 'https://[invalid/a'):
+            with self.subTest(value=value):
+                self.assertIsNone(cover_url(value))
+        for value in ('https://example.com/a.jpg', 'http://example.com/a%20b.jpg?x=1&y=2'):
+            self.assertEqual(cover_url(' ' + value + ' '), value)
+        table = '| file.name | author |\n| --- | --- |\n| [A & B](book.md) | null |\n'
+        result = render_cards(table, lambda source: ('/book/', None))
+        self.assertIn('rw-book-placeholder', result)
+        self.assertNotIn('<img', result)
+        self.assertNotIn('rw-book-author', result)
+        self.assertIn('A &amp; B', result)
+        self.assertIn('No books in this view.', render_cards('| Book |\n| --- |\n', lambda _: None))
+        self.assertIn('No books in this view.', render_cards('No results.', lambda _: None))
+
     def test_capture_helper_saves_export_without_changing_rows(self):
         script = Path(__file__).resolve().parents[1] / 'tools/save_database_snapshot.py'
         spec = importlib.util.spec_from_file_location('save_database_snapshot', script)

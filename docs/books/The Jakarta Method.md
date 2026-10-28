@@ -1,8 +1,8 @@
 ---
 tags:
   - book
-  - unfinished-page
-author: Example Author
+author: Vincent Bevins
+cover image: https://bugsblog.neocities.org/Bookcovers/Jakarta.png
 status: To read
 date started: 2026-10-25T23:21:00
 date ended: 2026-10-25T23:21:00

@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "Rob Thomas"
+cover image: "https://bugsblog.neocities.org/Bookcovers/6598563-L.jpg"
 status: To read
 date started: 2023-08-11
 date ended: 2023-08-15

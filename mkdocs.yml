@@ -3,11 +3,18 @@ site_description: Books, ideas, and connections
 site_url: https://l4valamp.github.io/reading-wiki/
 theme:
   name: mkdocs
+extra_css:
+  - stylesheets/library.css?v=compact-titles-6
+extra_javascript:
+  - javascripts/library.js?v=book-cards-2
 plugins:
   - search
   - databaseview:
       auto_export: true
       snapshot_manifest: database-snapshots/manifest.yml
+      book_card_views:
+        - Books.base
+        - Books.base#View
 nav:
   - Home: index.md
   - Books: books/index.md

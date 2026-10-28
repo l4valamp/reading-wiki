@@ -3,23 +3,13 @@ tags:
   - book
   - unfinished-page
 author: "Aaron Glantz"
+cover image: "https://bugsblog.neocities.org/Bookcovers/Screen%20Shot%202023-08-30%20at%2011.15.12%20PM.png"
 status: To read
 date started: 2023-08-15
 date ended: 2023-08-29
 ---
 # Homewreckers
 
-## Reading log
-
-- Logged under: 2023.
-- Reading dates on the webpage: 8/15/23–8/29/23.
-
-Dates refer to the source reading log. Status retains the template default.
-
 ## Notes
 
-Notes and reading references go here.
-
-## Source
-
-[Bugs's Bookshelf](https://bugsblog.neocities.org/)
+This rivals [[The Israel Lobby and U.S. Foreign Policy]] for the book I am most frustrated about not being able to recall most of. For that reason, I have gone back through a summary of this one to take my notes again. 

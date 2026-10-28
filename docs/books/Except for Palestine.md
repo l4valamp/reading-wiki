@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "Marc Lamont Hill and Mitchell Plitnick"
+cover image: "https://bugsblog.neocities.org/Bookcovers/except%20for%20palestine.jpg"
 status: To read
 date started: 2023-12-11
 date ended: 2023-12-14

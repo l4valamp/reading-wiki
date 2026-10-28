@@ -1,25 +1,21 @@
 ---
 tags:
   - book
-  - unfinished-page
-author: "David Graeber"
+  - revisit
+author: David Graeber
+cover image: https://bugsblog.neocities.org/Bookcovers/debt.jpg
 status: To read
 date started: 2023-12-04
 date ended: 2023-12-08
 ---
 # Debt: The First 5,000 Years
 
-## Reading log
-
-- Logged under: 2023.
-- Reading dates on the webpage: 12/4/23–12/8/23.
-
-Dates refer to the source reading log. Status retains the template default.
-
 ## Notes
 
-Notes and reading references go here.
+I was a big fan of [[The Dawn of Everything]] and wanted to read more David Graeber. 
 
-## Source
+This book spawned a fascination with wanting to plan a DnD setting and campaign focused around Debt. I really enjoy the individual anthropological case studies about how different cultures interact with Debt. I have a bunch of old notes I want to dig up and paste on this page. 
 
-[Bugs's Bookshelf](https://bugsblog.neocities.org/)
+Specifically, the anecdote about the [[IMF]] and Malaria really hooked me from the beginning and made me question my belief in the truthism that [[People ought to repay their debts]].
+
+This book motivated me to read Margaret Attwood's [[Payback]]. I feel like it also made me think about [[Homewreckers]] in a new light. 

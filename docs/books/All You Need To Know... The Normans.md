@@ -1,25 +1,19 @@
 ---
 tags:
   - book
-  - unfinished-page
-author:
+  - revisit
+author: Daniel Gerrard
+cover image: https://bugsblog.neocities.org/Bookcovers/the_normans.jpg
 status: To read
-date started:
-date ended:
+date started: 2024-01-01
+date ended: 2024-01-01
 ---
 # All You Need To Know... The Normans
 
-## Reading log
-
-- Logged under: 2024.
-- Exact reading dates are not supplied on the webpage.
-
-Dates refer to the source reading log. Status retains the template default.
-
 ## Notes
 
-Notes and reading references go here.
+Talked about the [[White Ship Wreck]]. I don't remember much from this book but I got it at the Bristol ren faire and it was while I was reading [[The Middle Ages - A Graphic History]]. 
 
-## Source
+There was a bit about a leader who was horrible and caused mass unrest because he was two soft. He held a king's son hostage and threatened to kill him but nobody believed him and he played dolls with the kid, etc. 
 
-[Bugs's Bookshelf](https://bugsblog.neocities.org/)
+Talked about Lionheart guy. 

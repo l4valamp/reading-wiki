@@ -1,25 +1,15 @@
 ---
 tags:
   - book
-  - unfinished-page
-author:
+author: Orson Scott Card
+cover image: https://bugsblog.neocities.org/Bookcovers/Enders_game.jpg
 status: To read
-date started:
-date ended:
+date started: 2024-01-01
+date ended: 2024-01-01
 ---
 # Ender's Game
 
-## Reading log
-
-- Logged under: 2024.
-- Exact reading dates are not supplied on the webpage.
-
-Dates refer to the source reading log. Status retains the template default.
-
 ## Notes
 
-Notes and reading references go here.
+I read this on a plane and enjoyed it! Recommended by a friend. I liked the focus on Ender assembling his squad and learning to work with different types of people, and how the "yay teamwork!" made the end sting a little more. 
 
-## Source
-
-[Bugs's Bookshelf](https://bugsblog.neocities.org/)

@@ -2,9 +2,10 @@
 tags:
   - book
   - unfinished-page
-author: "Nancy Isenberg"
+author: Nancy Isenberg
+cover image: "https://bugsblog.neocities.org/Bookcovers/Screen%20Shot%202023-08-15%20at%203.20.43%20PM.png"
 status: To read
-date started:
+date started: 2023-01-01T23:35:00
 date ended:
 ---
 # White Trash

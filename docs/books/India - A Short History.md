@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "Andrew Robinson"
+cover image: "https://bugsblog.neocities.org/Bookcovers/indiashorthistory.jpg"
 status: To read
 date started: 2024-01-05
 date ended: 2024-01-08

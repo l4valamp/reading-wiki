@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "Marjorie Hillis"
+cover image: "https://bugsblog.neocities.org/Bookcovers/a1204c5a93340e98fa10d2628954c343.jpg"
 status: To read
 date started: 2023-12-28
 date ended: 2023-12-28

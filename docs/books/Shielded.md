@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "Joanna Schwartz"
+cover image: "https://bugsblog.neocities.org/Bookcovers/9780593299364.jpg"
 status: To read
 date started: 2023-06-28
 date ended: 2023-07-03

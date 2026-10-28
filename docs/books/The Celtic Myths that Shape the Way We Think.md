@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "Mark Williams"
+cover image: "https://bugsblog.neocities.org/Bookcovers/celticmyths.jpg"
 status: To read
 date started: 2023-10-20
 date ended: 2023-10-22

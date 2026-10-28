@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "Margaret Atwood"
+cover image: "https://bugsblog.neocities.org/Bookcovers/payback.jpg"
 status: To read
 date started: 2023-12-09
 date ended: 2023-12-10

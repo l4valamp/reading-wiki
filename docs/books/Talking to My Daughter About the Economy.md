@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "Yanis Varoufakis"
+cover image: "https://bugsblog.neocities.org/Bookcovers/talking%20to%20my%20daughter.png"
 status: To read
 date started: 2023-08-30
 date ended: 2023-09-04

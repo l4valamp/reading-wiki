@@ -4,6 +4,7 @@ __pycache__/
 *.pyc
 site/
 docs/.obsidian/
+.obsidian/
 database-snapshots/manifest.yml
 database-snapshots/state.json
 database-snapshots/generated/

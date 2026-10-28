@@ -4,7 +4,7 @@ import posixpath
 import hashlib
 import re
 from pathlib import Path
-from urllib.parse import quote, urlsplit
+from urllib.parse import quote, unquote, urlsplit
 from xml.etree import ElementTree
 
 import yaml
@@ -16,6 +16,7 @@ from mkdocs.exceptions import PluginError
 from mkdocs.plugins import BasePlugin
 
 from .automatic_export import input_digest, request_export, read_export_state
+from .book_cards import cover_url, render_cards
 
 
 BASE_EMBED_RE = re.compile(r"!\[\[([^\]#]+?\.base)(?:#([^\]]+))?\]\]", re.IGNORECASE)
@@ -63,6 +64,7 @@ class DBViewPlugin(BasePlugin):
         ("auto_export", config_options.Type(bool, default=False)),
         ("export_timeout", config_options.Type(int, default=90)),
         ("snapshot_manifest", config_options.Type(str, default="database-snapshots/manifest.yml")),
+        ("book_card_views", config_options.ListOfItems(config_options.Type(str), default=[])),
     )
 
     def on_config(self, config):
@@ -198,11 +200,27 @@ class DBViewPlugin(BasePlugin):
                 parts = re.split(r"(`+.*?`+)", line)
                 for index in range(0, len(parts), 2):
                     parts[index] = BASE_EMBED_RE.sub(
-                        lambda match: "\n\n" + self.read_snapshot(self.current_page, match) + "\n\n",
+                        lambda match: "\n\n" + self.render_snapshot(match) + "\n\n",
                         parts[index],
                     )
                 output.append("".join(parts))
         return "".join(output)
+
+    def render_snapshot(self, match):
+        snapshot = self.read_snapshot(self.current_page, match)
+        if self.embed_key(match) in self.config['book_card_views']:
+            return render_cards(snapshot, self.book_card_data)
+        return snapshot
+
+    def book_card_data(self, source):
+        target = self.resolve_note(unquote(urlsplit(source).path))
+        if target is None:
+            raise PluginError(f'{self.current_page}: Book card target not found: {source}')
+        text = Path(target.abs_src_path).read_text(encoding='utf-8-sig')
+        frontmatter = re.match(r'\A---[ \t]*\r?\n(.*?)\r?\n---[ \t]*(?:\r?\n|$)', text, re.DOTALL)
+        metadata = yaml.safe_load(frontmatter.group(1)) if frontmatter else {}
+        cover = cover_url(metadata.get('cover image')) if isinstance(metadata, dict) else None
+        return self.note_href(target, rendered=True), cover
 
     def resolve_note(self, name):
         name = name.replace("\\", "/")
@@ -216,8 +234,12 @@ class DBViewPlugin(BasePlugin):
         matches = self.note_names.get(Path(name).stem.casefold(), [])
         return matches[0] if len(matches) == 1 else None
 
-    def note_href(self, target):
+    def note_href(self, target, rendered=False):
         if self.site_url_path:
             return self.site_url_path + "/" + target.url
+        if rendered:
+            current = self.notes[self.current_page.casefold()]
+            href = posixpath.relpath(target.url, posixpath.dirname(current.url) or '.')
+            return href + ('/' if target.url.endswith('/') else '')
         source = posixpath.relpath(target.src_uri, posixpath.dirname(self.current_page) or ".")
         return quote(source, safe="/")

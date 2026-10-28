@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "Frantz Fanon"
+cover image: "https://bugsblog.neocities.org/Bookcovers/81Bak4YCtrL._SL1500_.jpg"
 status: To read
 date started: 2023-11-19
 date ended: 2023-11-24

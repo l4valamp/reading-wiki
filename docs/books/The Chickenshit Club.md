@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "Jesse Eisinger"
+cover image: "https://bugsblog.neocities.org/Bookcovers/%7B753649B6-18AC-489A-AB1D-DE88214970BD%7DImg100.jpg"
 status: To read
 date started: 2023-07-03
 date ended: 2023-07-07

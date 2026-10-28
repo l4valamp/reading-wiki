@@ -1,25 +1,19 @@
 ---
 tags:
   - book
-  - unfinished-page
-author:
+  - revisit
+author: Richard Curtis
+cover image: https://bugsblog.neocities.org/Bookcovers/about_time.png
 status: To read
-date started:
-date ended:
+date started: 2024-01-01
+date ended: 2024-01-01
 ---
 # About Time
 
-## Reading log
-
-- Logged under: 2024.
-- Exact reading dates are not supplied on the webpage.
-
-Dates refer to the source reading log. Status retains the template default.
-
 ## Notes
 
-Notes and reading references go here.
+I was given this book as a gift. It talks about clocks. 
 
-## Source
+I remember a vivid chapter describing someone shooting a gun by a lighthouse to keep time. Need to go back and remember exact details. 
 
-[Bugs's Bookshelf](https://bugsblog.neocities.org/)
+Book talked about how clock technology made overseas travel more possible.

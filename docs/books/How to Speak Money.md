@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "John Lanchester"
+cover image: "https://bugsblog.neocities.org/Bookcovers/9780393351705_300.jpg"
 status: To read
 date started: 2023-07-10
 date ended: 2023-07-21

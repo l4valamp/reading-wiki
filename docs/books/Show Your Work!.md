@@ -3,6 +3,7 @@ tags:
   - book
   - unfinished-page
 author: "Austin Kleon"
+cover image: "https://bugsblog.neocities.org/Bookcovers/%7BFE5AF618-CA71-4D58-9F2E-64C21A7DA5F5%7DImg100.jpg"
 status: To read
 date started: 2023-09-10
 date ended: 2023-09-10
