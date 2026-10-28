@@ -3,6 +3,7 @@ from __future__ import annotations
 import posixpath
 import hashlib
 import re
+from html import escape
 from pathlib import Path
 from urllib.parse import quote, unquote, urlsplit
 from xml.etree import ElementTree
@@ -179,6 +180,15 @@ class DBViewPlugin(BasePlugin):
         if list(self.embeds_in_markdown(text)):
             raise PluginError(f"{page}: {path} still contains a .base embed; export the rendered table instead.")
         return text
+
+    def on_page_content(self, html, page, config, files):
+        path = page.file.src_uri
+        cover = cover_url(page.meta.get('cover image'))
+        if not path.startswith('books/') or Path(path).name == 'index.md' or not cover:
+            return html
+        return (f'<img class="rw-page-cover" src="{escape(cover, quote=True)}" '
+                f'alt="{escape(page.title or Path(path).stem, quote=True)} — cover" '
+                'width="160" height="240" decoding="async">\n' + html)
 
     def on_page_markdown(self, markdown, page, config, files):
         self.current_page = page.file.src_uri

@@ -145,6 +145,25 @@ class SnapshotPublishingTest(unittest.TestCase):
                         self.assertIn('No results.', topic)
                         self.assertNotIn('rw-book-grid', topic)
 
+    def test_individual_book_cover_is_escaped_and_limited_to_book_notes(self):
+        from types import SimpleNamespace
+        from mkdocs_databaseview_plugin.plugin import DBViewPlugin
+        plugin = DBViewPlugin()
+        page = SimpleNamespace(file=SimpleNamespace(src_uri='books/Example.md'),
+                               title='Book & title',
+                               meta={'cover image': 'https://example.com/a.jpg?x=1&y=2'})
+        rendered = plugin.on_page_content('<h1>Book</h1><p>Notes</p>', page, None, None)
+        self.assertTrue(rendered.startswith('<img class="rw-page-cover"'))
+        self.assertIn('x=1&amp;y=2', rendered)
+        self.assertIn('Book &amp; title', rendered)
+        self.assertTrue(rendered.endswith('<h1>Book</h1><p>Notes</p>'))
+        for path, cover in [('books/index.md', 'https://example.com/a.jpg'),
+                            ('topics/Example.md', 'https://example.com/a.jpg'),
+                            ('books/Example.md', ''), ('books/Example.md', 'javascript:bad')]:
+            page.file.src_uri = path
+            page.meta['cover image'] = cover
+            self.assertEqual(plugin.on_page_content('Notes', page, None, None), 'Notes')
+
     def test_book_cover_validation_and_empty_cards(self):
         from mkdocs_databaseview_plugin.book_cards import cover_url, render_cards
         for value in (None, '', '   ', [], 42, 'javascript:alert(1)', 'data:image/png;base64,abc',

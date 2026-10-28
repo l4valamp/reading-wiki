@@ -4,7 +4,7 @@ site_url: https://l4valamp.github.io/reading-wiki/
 theme:
   name: mkdocs
 extra_css:
-  - stylesheets/library.css?v=compact-titles-6
+  - stylesheets/library.css?v=page-covers-7
 extra_javascript:
   - javascripts/library.js?v=book-cards-2
 plugins:
