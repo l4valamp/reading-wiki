@@ -1,0 +1,64 @@
+/* Atomic-age stationery: inherit all library spacing and type sizes. */
+body.rw-creative {
+  --rw-paper: #edf3ef;
+  --rw-surface: #f6f8f0;
+  --rw-text: #203d46;
+  --rw-muted: #506a70;
+  --rw-link: #24636b;
+  --rw-sage: #dce9e4;
+  --rw-olive: #477d7c;
+  --rw-warm: #994b32;
+  --rw-border: #b4ccca;
+  --rw-focus: #994b32;
+  --rw-font-body: "Trebuchet MS", "Gill Sans", sans-serif;
+  --rw-font-heading: "Century Gothic", "Futura", "Trebuchet MS", sans-serif;
+  --rw-font-mono: "Courier New", Courier, monospace;
+  --rw-body-shadow: 0 4px 12px rgb(10 30 43 / 12%), 0 18px 42px rgb(10 30 43 / 18%);
+  background-color: #142c3c;
+  background-image:
+    radial-gradient(circle at 19px 31px, #d6e8df 1px, transparent 1.6px),
+    radial-gradient(circle at 97px 117px, #b5cdc7 0.7px, transparent 1.3px),
+    radial-gradient(circle at 153px 63px, #d4ac81 1px, transparent 1.6px);
+  background-size: 251px 263px, 193px 211px, 347px 331px;
+}
+
+[data-bs-theme="dark"] body.rw-creative {
+  --rw-paper: #182f3b;
+  --rw-surface: #1c3742;
+  --rw-text: #e2ebe3;
+  --rw-muted: #adc7c8;
+  --rw-link: #97d4cb;
+  --rw-sage: #25454e;
+  --rw-olive: #9bc7bc;
+  --rw-warm: #efba91;
+  --rw-border: #49656d;
+  --rw-focus: #efba91;
+}
+
+body.rw-creative::before { background: none; }
+body.rw-creative > .navbar .navbar-brand { letter-spacing: .025em; }
+body.rw-creative [role="main"] h1 { color: var(--rw-link); }
+
+/* A quiet orbital mark replaces the library's slanted rule accent. */
+body.rw-creative [role="main"] hr::after {
+  top: -5px;
+  width: 1.5rem;
+  height: .55rem;
+  border: 1px solid var(--rw-olive);
+  border-radius: 50%;
+  background: var(--rw-paper);
+  transform: rotate(-25deg);
+}
+
+@media print {
+  body.rw-creative {
+    --rw-paper: #fff;
+    --rw-surface: #fff;
+    --rw-text: #111;
+    --rw-muted: #444;
+    --rw-link: #111;
+    --rw-sage: #fff;
+    --rw-border: #bbb;
+    background: #fff;
+  }
+}
